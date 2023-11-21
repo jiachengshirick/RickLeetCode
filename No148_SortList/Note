@@ -1,0 +1,4 @@
+1. Head means the 1st one. The address of head can point to any LinkNode.
+2. Edge case:
+    a. Size:0, 1, 2
+3. Make head and tail always in their correct position. Because we may swap them with the number in the middle.
