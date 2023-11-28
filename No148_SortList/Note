@@ -2,3 +2,9 @@
 2. Edge case:
     a. Size:0, 1, 2
 3. Make head and tail always in their correct position. Because we may swap them with the number in the middle.
+4. QuickSort is not good enough. I prefered to use mergeSort for this kind of questions.
+5. Divide phase, Divide the problem into subproblems.
+6. Conquer phase: Repeatedly solve each subproblem independently and combine the result to form the original problem
+7. This problem involves two points:
+    a. 21. Merge Two Sorted Lists //EASY
+    b. 876. Middle of the Linked List //EASY
