@@ -1,0 +1,8 @@
+This is a very simple problem. I used 10 minutes finished coding.
+Mainly tips are creating a dummyheads. I created a new head for adding different node in that new List. May try to rewhirl the ListNode.
+Approach 1 is using Recursion.
+Approach 2 is rewhirling, it requires four ptr: prehead prev l1ptr l2ptr.
+    - prehead : root of prehead
+    - prev : which node was just relinked to prehead
+    - l1ptr : which node in list1
+    - l2ptr : which node in list2
