@@ -1,0 +1,3 @@
+I loved fast and slow pointer. Unbelievable approach.
+If the speed of faster ptr is twice of slower ptr. Then when faster pointer touched nullptr.
+slower ptr just reach the middle of list.
