@@ -11,77 +11,61 @@
 class Solution {
 public:
     ListNode* sortList(ListNode* head) {
-        if(!head || !head->next)
-            return head;
-        ListNode* mid = getMid(head);
-        ListNode* h1 = sortList(head);
-        ListNode* h2 = sortList(mid->next);
         return mergeSort(head);
     }
 
 private:
-    ListNode* mergeSort(ListNode* head, ListNode* tail) {
-        if(!head || head==tail) return head;
+    ListNode* mergeSort(ListNode* head) {
+        if(!head) return head;
         if(!head->next) return head;
-        ListNode* mid = getMid(head, tail);
-        ListNode* h1 = mergeSort(head, mid);
-        ListNode* h2 = mergeSort(mid->next, tail);
+        ListNode* mid = getMid(head);
+        ListNode* h1 = mergeSort(head);
+        ListNode* h2 = mergeSort(mid);
+        ListNode* dummyHead = sortOperator(h1, h2);
+        return dummyHead;
+    }
+
+    ListNode* sortOperator(ListNode* h1, ListNode* h2){
+        ListNode* h1ptr = h1;
+        ListNode* h2ptr = h2;
         ListNode* dummyHead = new ListNode();
         ListNode* ptrDummy = dummyHead;
-        while(h1!=tail){
-            if (h2!=tail->next && h2->val < h1->val){
-                ptrDummy->next = new ListNode(h2->val);
-                h2 = h2->next;
+        //TODO: H1 finished first, H2 Finished first. one by one
+        while (h1ptr!=NULL || h2ptr!=NULL){
+            if (h1ptr==NULL) {
+                ptrDummy->next = h2ptr;
+                h2ptr = NULL;
+                continue;
+            }
+            if (h2ptr==NULL) {
+                ptrDummy->next = h1ptr;
+                h1ptr = NULL;
+                continue;
+            }
+            if(h1ptr->val<h2ptr->val){
+                ptrDummy->next = h1ptr;
+                h1ptr = h1ptr->next;
                 ptrDummy = ptrDummy->next;
             } else {
-                ptrDummy->next = new ListNode(h1->val);
-                h1 = h1->next;
+                ptrDummy->next = h2ptr;
+                h2ptr = h2ptr->next;
                 ptrDummy = ptrDummy->next;
             }
-            if (h1 == h2) break;
+
         }
         return dummyHead->next;
     }
 
-    ListNode* swapNumber(ListNode* first, ListNode* second){
-        ListNode* tmp = second;
-        ListNode* beforeSecond = first;
-        while(beforeSecond->next!=second){
-            beforeSecond = beforeSecond->next;
+    ListNode* getMid(ListNode* head) {
+        ListNode* fast = head;
+        ListNode* slow = head;
+        ListNode* prev = head;
+        while(fast!=NULL&&fast->next!=NULL){
+            prev = slow;
+            slow = slow->next;
+            fast = fast->next->next;
         }
-        beforeSecond->next = second->next;
-        tmp->next = first;
-        first = tmp;
-        return tmp;
+        prev->next = NULL;
+        return slow;
     }
-
-    ListNode* getMid(ListNode* head, ListNode* tail) {
-        ListNode* ptr = head;
-        ListNode* tailPtr = tail;
-        while (ptr->next && ptr->next->next){
-            if (ptr->next == tail) {
-                tail = ptr;
-                break;
-            }
-            ListNode* tmp = ptr->next;
-            ptr->next = ptr->next->next;
-            tmp->next = tailPtr->next;
-            tailPtr->next = tmp;
-            tailPtr = tailPtr->next;
-            ptr = ptr->next;
-            if (ptr == tail) break;
-        }
-        return tail;
-    }
-
-    ListNode* getTail(ListNode* head) {
-        if (!head) return head;
-        if (!head->next) return head;
-        ListNode* tail = head;
-        while(tail->next){
-            tail = tail->next;
-        }
-        return tail;
-    }
-
 };
