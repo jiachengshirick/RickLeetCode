@@ -1,0 +1,15 @@
+KMP for Pattern Searching
+
+Text Message    A
+
+Pattern         B
+Pattern Matching value: [0 0 0 1]
+
+if the first character of B same as the current character of A
+Then starting KMP
+         Ptr
+         ｜
+[0 0 0 1 2 0 0 0 0]
+      [0 0 0 1]
+
+ Ptr A - Ptr B = Pattern move
