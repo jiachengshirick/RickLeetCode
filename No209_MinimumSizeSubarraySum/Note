@@ -13,3 +13,25 @@ Then starting KMP
       [0 0 0 1]
 
  Ptr A - Ptr B = Pattern move
+
+======================================================================
+
+ My question:
+ 1. I can not find the way to use subarray algorithm in a sum of subarray question. Because the length of subarray will change when we move window to certain block. At least we can not use KMP here? Cant we?
+
+======================================================================
+
+Double ptr problem
+
+Approach #1 Brute Force: O(n^3)
+Get every subarray in array. Compare the sum of subarray elements to the Target value.
+
+Approach #2 Better Brute Force: O(n^2)
+Create a Sum array, and recorded accumulative value from nums[0]
+
+Approach #3 Using Binary Search: O(log(n))
+BS must make sure the array is ascending order.
+Lower_Bound 会返回一个值，他输出的是value，数组对应位置的值，但是本身参与运算的是下标。
+
+Approach #4 Using Double Ptr:
+
