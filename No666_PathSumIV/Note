@@ -1,0 +1,10 @@
+Completed No666, get 5ms calculation speed. Not that bad. The best solution is global variable and ptrs. I do not like them."
+
+1. Data structure: Tree
+2. Algorithm : DFS:
+    I. Get rt value,
+    II. a. if has leaves
+        b. if no leaf
+    III. Integrated sum
+
+3. Need to think about route sum. Means we do not need to care about previous status. Do sum and add final leaves will be OK.
