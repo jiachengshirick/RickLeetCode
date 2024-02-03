@@ -1,0 +1,15 @@
+This is a question about the FileSystem design. The difficulty of this problem should be medium.
+It is hard to get idea but easy to understand.
+
+LS algorithm: path.substr(path.find_last_of('/')+1)
+
+FileSystem Data Structure:
+struct Node{
+    unordered_map< string, Node* > dir = {};
+    vector<string> pathList = {};
+    string content = "";
+}
+
+File system usually can be considered as Trie. The next level is the next layer in tree.
+
+ls, mkdir, readContent, addContent
